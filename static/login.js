@@ -5,18 +5,26 @@ const emailIn = document.querySelector('#email-input');
 const passIn = document.querySelector('#pass-input');
 const signInBtn = document.querySelector('#sign-in');
 const signUpBtn = document.querySelector('#sign-up');
+const link = document.querySelector('#link');
 
-function whichOne() {
-  console.log('wassup')
-  if (document.title === 'Animusic | Sign in') {
+function whichOne(title) {
+  if (title === 'Animusic | Sign in') {
     nameIn.style.display = 'none'
     signInBtn.style.display = 'block';
+    signUpBtn.style.display = 'none';
+    link.innerText = 'Sign up';
   } else {
     signUpBtn.style.display = 'block';
+    signInBtn.style.display = 'none';
+    link.innerText = 'Sign in';
   }
 }
-whichOne()
-window.addEventListener("hashchange", whichOne, false);
+whichOne(document.title)
+
+function pushState(page, title) {
+  window.history.replaceState({}, title, `${window.origin}/${page}`);
+  whichOne(title)
+}
 
 function signUp() {
   var name = nameIn.value;
@@ -40,5 +48,9 @@ auth.onAuthStateChanged(user => {
   }
 })
 document.querySelector('#link').onclick = () => {
-  window.history.pushState({ page: 'login' }, 'Animusic | Sign in', `${window.origin}/login`);
+  if (event.target.innerText === 'Sign in') {
+    pushState('sign-in', 'Animusic | Sign in')
+  } else if (event.target.innerText === 'Sign up') {
+    pushState('sign-up', 'Animusic | Sign up')
+  }
 }
