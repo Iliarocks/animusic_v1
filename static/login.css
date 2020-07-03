@@ -1,0 +1,122 @@
+html {
+  height: 100vh;
+}
+body {
+  font-family: 'Mukta Mahee', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+h1 {
+  font-size: 3.5em;
+  line-height: 70px;
+  margin-bottom: 0.5em;
+}
+h2 {
+  transform: rotate(270deg);
+  transform-origin: center;
+  position: absolute;
+  right: 5em;
+  top: 7em;
+  font-size: 2.6em;
+}
+form {
+  padding: 4.5em 12.5em;
+  width: 500px;
+}
+input {
+  font-size: 1.2em;
+  border-radius: 3.4em;
+  border: none;
+  background: #f5f5f5;
+  width: 15em;
+  padding: 20px 23px;
+  margin: 0.5em 0;
+  font-weight: 700;
+  outline: none;
+  color: #303030;
+}
+button {
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 17.5em;
+  border-radius: 3.4em;
+  color: white;
+  cursor: pointer;
+  padding: 20px 23px;
+  border: none;
+  background: #756BF9;
+  margin: 0.5em 0 0.8em;
+  transition: 150ms ease;
+}
+button:hover {
+  transform: scale(1.015);
+}
+form > p {
+  margin: 0 54px;
+}
+#link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.ball {
+  animation: pulse 2s infinite;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  min-width: 4.8em;
+  min-height: 4.8em;
+  border-radius: 50%;
+  z-index: 1;
+}
+.ball:hover {
+  animation: step-end;
+}
+@keyframes pulse {
+  from { transform: scale(0.93);}
+  50% { transform: scale(1); box-shadow: 2px 2px 7px rgba(91, 91, 91, 0.34)}
+  to { transform: scale(0.93);}
+}
+.blue {
+  background: #31CDFF;
+}
+.pink {
+  background: #FC3EAA;
+}
+.purple {
+  background: #6B19FF;
+}
+#ball1 {
+  top: 16em;
+  left: 45em;
+}
+#ball2 {
+  height: 5.5em;
+  width: 5.5em;
+  top: 45%;
+  left: -1em;
+}
+#ball5 {
+  height: 7.5em;
+  width: 7.5em;
+  right: -3em;
+  top: 30em;
+}
+#ball6 {
+  top: 3em;
+  left: 33em;
+}
+#ball3 {
+  width: 8.5em;
+  height: 8.5em;
+  top: -3em;
+  right: 1em;
+}
+#ball4 {
+  bottom: -3.5em;
+  height: 24%;
+  width: 12%;
+  right: 20%;
+}

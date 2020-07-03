@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Animusic | {{ action }}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Mukta+Mahee:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
@@ -12,13 +13,21 @@
 
 <body>
   <form class="" action="index.html" method="post">
+    <h1 id="title">{{ title1 }}<br> {{ title2 }}</h1>
     <input id="name-input" type="text" placeholder="Full name">
     <input id="email-input" type="text" placeholder=Email>
-    <input id="pass-input" type="text" placeholder="Password">
+    <input id="pass-input" type="password" placeholder="Password">
     <button style="display:none;" id="sign-up" type="button" name="button" onclick="signUp()">Get started</button>
     <button style="display:none;" id="sign-in" type="button" name="button" onclick="signIn()">Login</button>
-    <p id="link">{{ link }}</p>
+    <p><span id="question">{{ question }} </span> <span id="link"> {{ link }}</span></p>
   </form>
+  <div id="ball1" class="ball blue"></div>
+  <div id="ball2" class="ball blue"></div>
+  <div id="ball3" class="ball pink"></div>
+  <div id="ball4" class="ball pink"></div>
+  <div id="ball5" class="ball purple"></div>
+  <div id="ball6" class="ball purple"></div>
+  <h2><span style="color: #FC3EAA;">Share</span> · <span style="color: #6B19FF;">Discover</span> · <span style="color: #31CDFF;">Listen</span></h2>
   <script>
     // Your web app's Firebase configuration
     var firebaseConfig = {
