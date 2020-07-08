@@ -39,6 +39,9 @@ function signUp() {
   var name = nameIn.value;
   var email = emailIn.value;
   var pass = passIn.value;
+  if (name === '' || email === '' || pass === '') {
+    alert("Hmm... something's missing")
+  }
   auth.createUserWithEmailAndPassword(email, pass)
     .catch(err => alert(err))
     .then(() => database.ref('/users/' + auth.currentUser.uid).set({ full_name: name }))
@@ -53,7 +56,7 @@ function signIn() {
 
 auth.onAuthStateChanged(user => {
   if (user) {
-    //window.location = window.origin
+    window.location = window.origin
   }
 })
 document.querySelector('#link').onclick = () => {

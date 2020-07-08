@@ -14,5 +14,9 @@ def get_started():
 def login():
     return render_template('login.html', action='Sign in', link='Sign up', question="Don't have an account?", title1='Welcome', title2='back')
 
+@app.route('/<anime>')
+def anime(anime):
+    return render_template('anime.html', anime=anime)
+
 if __name__ == '__main__':
     app.run(debug=True)

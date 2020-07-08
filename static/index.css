@@ -1,0 +1,175 @@
+html {
+  width: 100vw;
+  height: 100vh;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Mukta Mahee', sans-serif;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+/*header*/
+header {
+  margin: 0;
+  padding: 0;
+  height: 60px;
+  background: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+header > div > h2 {
+  cursor: pointer;
+}
+.header-navigator {
+  width: 78%;
+  min-width: 550px;
+  max-width: 1350px;
+  margin: 0 auto;
+  height: 60px;
+  padding: 10px 20px;
+}
+.signed-in-header {
+  float: right;
+  height: 40px;
+}
+.signed-out-header {
+  float: right;
+  height: 40px;
+}
+.header-icon {
+  font-size: 30px;
+  margin: 5px 0px 5px 26px;
+  cursor: pointer;
+  color: #b8b2b0;
+  transition: 140ms ease;
+}
+.header-icon:hover {
+  color: #d9a8ff;
+}
+/*banner*/
+.banner {
+  width: 100%;
+  height: 350px;
+  background: #afafaf;
+  margin-top: 60px;
+}
+/* anime */
+.anime-holder {
+  margin: auto;
+  width: 78%;
+  max-width: 1050px;
+  min-width: 550px;
+  margin-top: 80px;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(auto-fill, 250px);
+  margin-bottom: 100px;
+}
+.anime-box {
+  width: 100%;
+  height: 250px;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  transition: 210ms ease;
+  background-size: auto 100%;
+  margin: 0 auto;
+}
+.anime-box:hover {
+  margin-top: -6px;
+  margin-bottom: 6px;
+}
+.anime-box > h3 {
+  max-width: 170px;
+}
+.anime-box-text {
+  background: white;
+  padding: 5px;
+  padding-right: 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.anime-like {
+  float: right;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+  transition: 90ms ease;
+  text-shadow: 0px 0px 10px 10px rgba(96, 96, 96, 0.41);
+}
+.anime-like:hover {
+  transform: scale(1.05);
+}
+/* create pop up */
+.create-pop-up {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.26);
+  z-index: 1000;
+}
+.create-pop-up > form {
+  width: 500px;
+  height: 650px;
+  background: white;
+  margin: 7% auto;
+  padding: 25px;
+}
+#cover-input-label{
+  background: #d9a8ff;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 700;
+  margin-right: 100px;
+}
+#anime-wik-input {
+  margin-bottom: 30px;
+}
+.create-text-input {
+  width: 300px;
+  height: 50px;
+  border-radius: 50px;
+  border: none;
+  padding: 20px;
+  font-size: 19px;
+  outline: none;
+  font-weight: 700;
+  color: #303030;
+  margin: 0 180px 20px 0;
+  background: #f5f5f5;
+}
+#create-btn {
+  background: #d9a8ff;
+  color: white;
+  height: 48px;
+  width: 180px;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-top: 30px;
+}
+.create-error-box {
+  display: none;
+  float: right;
+  height: 60px;
+  text-align: right;
+  padding-right: 6px;
+  width: 200px;
+  border-right: 4px solid #ff3434;
+}
