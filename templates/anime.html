@@ -1,10 +1,96 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Animusic | {{ anime }}</title>
-  </head>
-  <body>
-    {{ anime }}
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Animusic | {{anime}}</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.1/css/all.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Mukta+Mahee:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo.png') }}">
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-storage.js"></script>
+</head>
+
+<body onload="setAnimeName('{{ anime }}')">
+  <header style="box-shadow: 3px 3px 10px rgba(#d9a8ff, 0.44)">
+    <div class="header-navigator">
+      <h2 style="display: inline-block"><span style="color: #d9a8ff;">ani</span>music</h2>
+      <div style="display: none;" class="signed-in-header">
+        <i id="profile-btn" class="fas fa-user-circle header-icon"></i>
+      </div>
+      <div style="display: none;" class="signed-out-header">
+        <i class="fas fa-user-plus header-icon"></i>
+      </div>
+      <i style="display:inline-block;float:right;" id="search-btn" class="fas fa-search header-icon"></i>
+    </div>
+  </header>
+  <div class="body" style="width:79%;margin:70px auto;padding:20px;min-width: 550px;max-width: 1350px;">
+    <div class="upper-half" style="width:100%;height:auto;min-height:250px;">
+      <div style="background-repeat: no-repeat;background-position: center;background-size: auto 250px;display:inline-block;"id="cover-img"></div>
+      <div class="upper-text" style="display:inline-block;height:250px;vertical-align:top;width:auto;min-width:700px;">
+        <h1 id="english-title"></h1>
+        <h2 id="jap-title"></h2>
+        <a id="wiki-link" href="#" target="_blank"><i id="link-icon"class="fas fa-link" style="color:#d9a8ff;margin-right:5px;"></i><span id="wiki-link-text"></span></a>
+        <div>
+          <select style="margin-right: 13px;" id="genre-select">
+            <option value="shonen">Shonen</option>
+            <option value="comedy">Comedy</option>
+            <option value="romance">Romance</option>
+            <option value="sports">Sports</option>
+            <option value="sci-fi">Sci-fi</option>
+            <option value="Isekai">Isekai</option>
+          </select>
+          <button id="open-add-song" type="button" name="button">add song <i style="margin-left:3px;" class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="song-holder">
+      <div style="width:300px;background:#dedede;height:380px;box-shadow: 0px 0px 25px rgba(217, 168, 255, 0.59);">
+        <div style="width:100%;background:#cdcdcd;height:70px;padding:15px;">
+          <div style="width:40px;background:#dedede;height:40px;border-radius:50%;"></div>
+        </div>
+      </div>
+      <div style="width:300px;background:#dedede;height:380px;box-shadow: 0px 0px 25px rgba(217, 168, 255, 0.59);">
+        <div style="width:100%;background:#cdcdcd;height:70px;padding:15px;">
+          <div style="width:40px;background:#dedede;height:40px;border-radius:50%;"></div>
+        </div>
+      </div>
+      <div style="width:300px;background:#dedede;height:380px;box-shadow: 0px 0px 25px rgba(217, 168, 255, 0.59);">
+        <div style="width:100%;background:#cdcdcd;height:70px;padding:15px;">
+          <div style="width:40px;background:#dedede;height:40px;border-radius:50%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="width:100vw;height:100vh;position:fixed;background:rgba(0, 0, 0, 0.3);top:60px;display:none;" class="add-song-prompt">
+    <form>
+      <i id="close-add-song" style="float:right;cursor:pointer;" class="fas fa-times"></i>
+      <h1>Add song</h1>
+      <p>to add a song insert a spotify track link that resembles this: <span style="color:#d9a8ff;">https://open.spotify.com/track/24NuEDgyRIljwSyY0lsr7b?si=7Xtgd5ATRHGjPpa4lHnTcQ</span></p>
+      <label for="spotify-link-input">Spotify link</label>
+      <input type="text" id="spotify-link-input">
+      <button id="add-song" type="button" name="button" onclick="addSong()"><i class="fas fa-plus"></i></button>
+      <p id="add-error-text" style="color:#f53636;margin-top: 8px;"></p>
+    </form>
+  </div>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBblgZ4cy2FT0_Lydilueh3eeCl4IO7OPs",
+      authDomain: "animusic-dev.firebaseapp.com",
+      databaseURL: "https://animusic-dev.firebaseio.com",
+      projectId: "animusic-dev",
+      storageBucket: "animusic-dev.appspot.com",
+      messagingSenderId: "1064983100624",
+      appId: "1:1064983100624:web:8b4600c34bdc54faac32d5"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script defer type="text/javascript" src="{{ url_for('static', filename='anime.js') }}"></script>
+</body>
+
 </html>
