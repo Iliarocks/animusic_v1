@@ -21,10 +21,19 @@
       <h2 style="display: inline-block"><span style="color: #d9a8ff;">ani</span>music</h2>
       <div style="display: none;" class="signed-in-header">
         <i id="create-btn-header" class="fas fa-plus-circle header-icon"></i>
-        <i id="profile-btn" class="fas fa-user-circle header-icon"></i>
+        <i id="header-profile-btn" class="fas fa-user-circle header-icon"></i>
+        <div class="profile-drop-down">
+          <div class="top-half">
+            <i style="font-size:27px;color: #b8b2b0;" id="profile-pic" class="fas fa-user-circle"></i>
+            <h2 id="full-name">Ilia Parunashvili</h2>
+          </div>
+          <div class="bottom-half">
+            <p id="sign-out" onclick="signOut()">Sign out</p>
+          </div>
+        </div>
       </div>
       <div style="display: none;" class="signed-out-header">
-        <i class="fas fa-user-plus header-icon"></i>
+        <i id="go-login" class="fas fa-user-plus header-icon"></i>
       </div>
       <i style="display:inline-block;float:right;" id="search-btn" class="fas fa-search header-icon"></i>
     </div>

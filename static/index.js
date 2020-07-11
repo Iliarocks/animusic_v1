@@ -15,6 +15,11 @@ auth.onAuthStateChanged(user => {
   }
 })
 
+function signOut() {
+  auth.signOut()
+    .catch(err => alert(err.message))
+}
+
 //go to anime sub-page
 function animeBoxEvent(arr) {
   arr.forEach(anime => {
@@ -103,4 +108,21 @@ document.querySelector('#close-create').onclick = () => {
 // go home from any page
 headerTitle.onclick = () => {
   window.location = window.origin;
+}
+
+//open/close profile drop down
+let profileDown = false;
+document.querySelector('#header-profile-btn').onclick = () => {
+  if (profileDown) {
+    document.querySelector('.profile-drop-down').style.display = 'none';
+    profileDown = false;
+  } else {
+    profileDown = true;
+    document.querySelector('.profile-drop-down').style.display = 'block';
+  }
+}
+
+// go to login page
+document.querySelector('#go-login').onclick = () => {
+  window.location = window.origin + '/sign-up'
 }

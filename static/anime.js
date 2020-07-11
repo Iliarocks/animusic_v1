@@ -6,11 +6,18 @@ auth.onAuthStateChanged(user => {
   if (user) {
     document.querySelector('.signed-in-header').style.display = 'inline-block';
     document.querySelector('.signed-out-header').style.display = 'none';
+    document.querySelector('#open-add-song').style.display = 'inline-block';
   } else {
     document.querySelector('.signed-out-header').style.display = 'inline-block';
     document.querySelector('.signed-in-header').style.display = 'none';
+    document.querySelector('#open-add-song').style.display = 'none';
   }
 })
+
+function signOut() {
+  auth.signOut()
+    .catch(err => alert(err.message))
+}
 
 function loadAnime() {
   database.ref(`/anime/${window.animeName}`).once('value', snap => {
@@ -19,6 +26,7 @@ function loadAnime() {
       document.querySelector('#jap-title').innerHTML = 'Go <a href="' + window.origin + '">home</a>'
       document.querySelector('#wiki-link').style.display = 'none';
       document.querySelector('#genre-select').style.display = 'none';
+      document.querySelector('#open-add-song').style.display = 'none';
       return;
     };
     document.querySelector('#cover-img').style.backgroundImage = `url(${snap.val().cover_src})`;
@@ -64,6 +72,7 @@ function loadSongs() {
   })
 }
 
+
 function setAnimeName(anime) {
   window.animeName = anime;
   loadAnime()
@@ -84,5 +93,20 @@ document.querySelector('#close-add-song').onclick = () => {
 document.querySelector('#open-add-song').onclick = () => {
   document.querySelector('.add-song-prompt').style.display = 'block';
 }
-// <iframe src="https://open.spotify.com/embed/track/2Vjg5rtBcuzx99SyAOHJsD" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-// https://open.spotify.com/track/2Vjg5rtBcuzx99SyAOHJsD?si=IdAbYABcQSKFmOzB6DO1Fw
+
+//open/close profile drop down
+let profileDown = false;
+document.querySelector('#header-profile-btn').onclick = () => {
+  if (profileDown) {
+    document.querySelector('.profile-drop-down').style.display = 'none';
+    profileDown = false;
+  } else {
+    profileDown = true;
+    document.querySelector('.profile-drop-down').style.display = 'block';
+  }
+}
+
+// go to login page
+document.querySelector('#go-login').onclick = () => {
+  window.location = window.origin + '/sign-up'
+}

@@ -1,6 +1,7 @@
 html {
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 }
 * {
   margin: 0;
@@ -39,6 +40,8 @@ header > div > h2 {
 .signed-in-header {
   float: right;
   height: 40px;
+  width: 180px;
+  margin-right: -80px;
 }
 .signed-out-header {
   float: right;
@@ -276,7 +279,7 @@ iframe {
   background: #b784df;
 }
 .upper-text > div > select {
-  padding: 12px;
+  padding: 11px;
   background: #d9a8ff;
   color: white;
   margin-top: 17px;
@@ -299,4 +302,45 @@ iframe {
   padding: 0;
   grid-template-columns: repeat(auto-fill, 300px);
   margin-bottom: 100px;
+}
+.profile-drop-down {
+  display: none;
+  height: 155px;
+  width: 170px;
+  padding: 5px;
+  border: 0.5px solid #bbbbbb;
+  border-radius: 4px;
+  margin-left: -42px;
+  margin-top: 5px;
+  background: white;
+}
+.top-half {
+  border-bottom: 1px solid #bbbbbb;
+  width: 160px;
+  height: 55%;
+  padding: 10px;
+  padding-top: 23px;
+}
+.bottom-half {
+  padding: 10px;
+  padding-top: 19px;
+}
+#sign-out {
+  color: #6e6e6e;
+  cursor: pointer;
+  font-weight: 600;
+}
+#sign-out:hover {
+  text-decoration: underline;
+}
+#profile-pic {
+  display: inline-block;
+}
+#full-name {
+  display: inline-block;
+  color: #494949;
+  font-size: 15px;
+  vertical-align: middle;
+  margin-top: -9px;
+  margin-left: 3px;
 }
